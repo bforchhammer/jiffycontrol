@@ -8,7 +8,6 @@
         }
     ],
     "license": "proprietary",
-    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "vcs",
@@ -16,6 +15,8 @@
         }
     ],
     "require": {
-        "goatherd/jiffybox-api": "*"
+        "goatherd/jiffybox-api": "*",
+        "silex/silex": "~1.1",
+        "symfony/yaml": "2.4.*@dev"
     }
 }
