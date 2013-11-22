@@ -1,0 +1,69 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "a5d5895ddf44cf11f8ea658d1233d75d",
+    "packages": [
+        {
+            "name": "goatherd/jiffybox-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/goatherd/jiffybox-api.git",
+                "reference": "cc32728cf75afbc944d755c4f9923f8ca472f992"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/goatherd/jiffybox-api/zipball/cc32728cf75afbc944d755c4f9923f8ca472f992",
+                "reference": "cc32728cf75afbc944d755c4f9923f8ca472f992",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Api\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maik Penz"
+                }
+            ],
+            "description": "https://www.jiffybox.de API client for PHP",
+            "homepage": "http://github.com/goatherd/jiffybox-api/",
+            "keywords": [
+                "api",
+                "jiffybox"
+            ],
+            "support": {
+                "source": "https://github.com/goatherd/jiffybox-api/tree/0.9",
+                "issues": "https://github.com/goatherd/jiffybox-api/issues"
+            },
+            "time": "2013-08-23 13:27:49"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ],
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}

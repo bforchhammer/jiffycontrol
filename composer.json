@@ -1,0 +1,21 @@
+{
+    "name": "bforchhammer/jiffycontrol",
+    "description": "Reboot, freeze, unfreeze jiffybox servers.",
+    "authors": [
+        {
+            "name": "Benedikt Forchhammer",
+            "email": "b.forchhammer@mind2.de"
+        }
+    ],
+    "license": "proprietary",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/goatherd/jiffybox-api"
+        }
+    ],
+    "require": {
+        "goatherd/jiffybox-api": "*"
+    }
+}
