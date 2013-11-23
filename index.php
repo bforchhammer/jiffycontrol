@@ -25,8 +25,8 @@ $app['jiffybox'] = $app->share(function ($app) {
     return $api;
 });
 
+// Register UrlGenerator and Twig.
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
-
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
@@ -34,11 +34,17 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 // Set debug from configuration.
 $app['debug'] = $app['config']['debug'];
 
-$app->get('/', function() use ($app) {
+// Register home route.
+$app->get('/', function () use ($app) {
+    // Load info about the jiffybox server.
     $box = $app['jiffybox']->get();
+
+    // Create a combined array of (error) messages.
     $messages = $app['jiffybox']->getLastMessages();
     $error = $app['jiffybox']->getCurlError();
     if (!empty($error)) $messages[] = $error;
+
+    // Render the box and available actions.
     return $app['twig']->render('index.twig', array(
       'server' => array(
         'ip' => $box->ips->public[0],
@@ -46,28 +52,28 @@ $app->get('/', function() use ($app) {
         'status' => $box->status,
         'running' => $box->running,
       ),
-      'errors' => $errors,
       'messages' => $messages,
     ));
 })->bind('homepage');
 
-$app->get('/freeze', function() use ($app) {
+// Register routes for actions.
+$app->get('/freeze', function () use ($app) {
     $app['jiffybox']->freeze();
     return $app->redirect($app['url_generator']->generate('homepage'));
 })->bind('freeze');
 
-$app->get('/thaw', function() use ($app) {
+$app->get('/thaw', function () use ($app) {
     $planId = $app['jiffybox']->get()->plan->id;
     $app['jiffybox']->thaw($planId);
     return $app->redirect($app['url_generator']->generate('homepage'));
 })->bind('thaw');
 
-$app->get('/start', function() use ($app) {
+$app->get('/start', function () use ($app) {
     $app['jiffybox']->start();
     return $app->redirect($app['url_generator']->generate('homepage'));
 })->bind('start');
 
-$app->get('/shutdown', function() use ($app) {
+$app->get('/shutdown', function () use ($app) {
     $app['jiffybox']->stop();
     return $app->redirect($app['url_generator']->generate('homepage'));
 })->bind('stop');
