@@ -7,17 +7,21 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 $app = new Silex\Application();
 
-// Register jiffybox api as service.
-$app['jiffybox'] = $app->share(function () {
-    $config = Yaml::parse(dirname(__DIR__) . '/config.yml');
-    if (empty($config['jiffybox']['token'])) {
-        throw new Exception("Token not configured.");
+// Load yaml config as a shared service.
+$app['config'] = $app->share(function() {
+    return Yaml::parse(__DIR__ . '/config.yml');
+});
+
+// Register the jiffybox api as shared service.
+$app['jiffybox'] = $app->share(function ($app) {
+    if (empty($app['config']['jiffybox']['token'])) {
+        throw new Exception("Property jiffybox.token not configured in config.yml!");
     }
-    if (empty($config['jiffybox']['server'])) {
-        throw new Exception("Server not configured.");
+    if (empty($app['config']['jiffybox']['server'])) {
+        throw new Exception("Property jiffybox.server not configured in config.yml!");
     }
-    $api = new Api\JiffyBox($config['jiffybox']['token']);
-    $api->setId($config['jiffybox']['server']);
+    $api = new Api\JiffyBox($app['config']['jiffybox']['token']);
+    $api->setId($app['config']['jiffybox']['server']);
     return $api;
 });
 
@@ -27,7 +31,8 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
 
-$app['debug'] = true;
+// Set debug from configuration.
+$app['debug'] = $app['config']['debug'];
 
 $app->get('/', function() use ($app) {
     $box = $app['jiffybox']->get();
