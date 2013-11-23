@@ -1,26 +1,36 @@
 <html>
 <body>
 <h1>FTB Server Control</h1>
+{% if server.name %}
 <p>Server Name: {{server.name}}</p>
 <p>Server IP: {{server.ip}}</p>
-{% if server.status == 'FROZEN' %}
+  {% if server.status == 'FROZEN' %}
 <p>Server is frozen. <a href="{{ path('thaw') }}">Thaw</a></p>
-{% elseif server.status == 'READY' %}
+  {% elseif server.status == 'READY' %}
 <p>Server is ready and
-{% if server.running %} running! <a href="{{ path('stop') }}">Shutdown</a>
-{% else %} not running! <a href="{{ path('start') }}">Start</a>{% endif %}
- | <a href="{{ path('freeze') }}">Freeze</a>
+  {% if server.running %} running! <a href="{{ path('stop') }}">Shutdown</a>
+  {% else %} not running! <a href="{{ path('start') }}">Start</a>{% endif %} | <a href="{{ path('freeze') }}">Freeze</a>
 </p>
-{% elseif server.status == 'FREEZING' %}
+  {% elseif server.status == 'FREEZING' %}
 <p>Server is being frozen at the moment. Please wait...</p>
-{% elseif server.status == 'THAWING' %}
+  {% elseif server.status == 'THAWING' %}
 <p>Server is being thawed at the moment. Please wait...</p>
-{% elseif server.status == 'UPDATING' %}
+  {% elseif server.status == 'UPDATING' %}
 <p>Server is being updated at the moment. Please wait...</p>
-{% elseif server.status == 'STOPPING' %}
+  {% elseif server.status == 'STOPPING' %}
 <p>Server is being shut down. Please wait...</p>
-{% else %}
+  {% else %}
 <p>Unknown status: {{ server.status }}
+  {% endif %}
 {% endif %}
+
+{% if messages %}
+<ul>
+  {% for msg in messages %}
+  <li>{{msg.message}} ({{msg.type}})</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
 </body>
 </html>

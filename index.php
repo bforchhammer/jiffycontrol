@@ -31,13 +31,18 @@ $app['debug'] = true;
 
 $app->get('/', function() use ($app) {
     $box = $app['jiffybox']->get();
+    $messages = $app['jiffybox']->getLastMessages();
+    $error = $app['jiffybox']->getCurlError();
+    if (!empty($error)) $messages[] = $error;
     return $app['twig']->render('index.twig', array(
       'server' => array(
         'ip' => $box->ips->public[0],
         'name' => $box->name,
-        'status' => $app['jiffybox']->getStatus(),
+        'status' => $box->status,
         'running' => $box->running,
       ),
+      'errors' => $errors,
+      'messages' => $messages,
     ));
 })->bind('homepage');
 
