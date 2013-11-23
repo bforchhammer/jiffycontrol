@@ -9,7 +9,7 @@
   {% elseif server.status == 'READY' %}
 <p>Server is ready and
   {% if server.running %} running! <a href="{{ path('stop') }}">Shutdown</a>
-  {% else %} not running! <a href="{{ path('start') }}">Start</a>{% endif %} | <a href="{{ path('freeze') }}">Freeze</a>
+  {% else %} not running! <a href="{{ path('start') }}">Start</a> | <a href="{{ path('freeze') }}">Freeze</a>{% endif %}
 </p>
   {% elseif server.status == 'FREEZING' %}
 <p>Server is being frozen at the moment. Please wait...</p>
