@@ -25,10 +25,30 @@ $app['jiffybox'] = $app->share(function ($app) {
     return $api;
 });
 
-// Register UrlGenerator and Twig.
+// Register UrlGenerator, Twig and Security Provider.
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
+));
+$app->register(new Silex\Provider\SecurityServiceProvider(), array(
+    'security.firewalls' => array(
+        'default' => array(
+            'pattern' => '^.*$',
+            'http' => true,
+            'stateless' => true,
+            // Disable security check if there are no users defined.
+            'security' => !empty($app['config']['users']),
+            'users' => $app->share(function () use ($app) {
+                 $users = array();
+                 $encoder = $app['security.encoder.digest'];
+                 foreach ($app['config']['users'] as $username => $password) {
+                     $encoded = $encoder->encodePassword($password, null);
+                     $users[$username] = array('password' => $encoded);
+                 }
+                 return new Symfony\Component\Security\Core\User\InMemoryUserProvider($users);
+            }),
+        ),
+    ),
 ));
 
 // Set debug from configuration.

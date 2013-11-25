@@ -2,3 +2,5 @@ jiffybox:
   token: 	# Set your jiffybox token here.
   server: 	# Set the id of the server you wish to control here.
 debug: false
+users:
+  admin: 12345
