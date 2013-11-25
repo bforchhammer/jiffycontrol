@@ -7,7 +7,7 @@
             "email": "b.forchhammer@mind2.de"
         }
     ],
-    "license": "proprietary",
+    "license": "MIT",
     "repositories": [
         {
             "type": "vcs",
