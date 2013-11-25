@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f485b8230ec7f1d95f5792682b0035ab",
+    "hash": "ed4d1b4d1c088e75b7b978cf76fc0976",
     "packages": [
         {
             "name": "goatherd/jiffybox-api",
@@ -642,17 +642,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "dev-master",
+            "version": "v2.3.7",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "1f7cabb841e62ec49615bd965ac780fd994b3f64"
+                "reference": "c1bda5b459d792cb253de12c65beba3040163b2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/1f7cabb841e62ec49615bd965ac780fd994b3f64",
-                "reference": "1f7cabb841e62ec49615bd965ac780fd994b3f64",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/c1bda5b459d792cb253de12c65beba3040163b2b",
+                "reference": "c1bda5b459d792cb253de12c65beba3040163b2b",
                 "shasum": ""
             },
             "require": {
@@ -661,7 +661,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -685,7 +685,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2013-10-17 11:48:11"
+            "time": "2013-10-17 11:48:01"
         },
         {
             "name": "twig/twig",
@@ -744,9 +744,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "symfony/yaml": 20
-    },
+    "stability-flags": [
+
+    ],
     "platform": [
 
     ],
