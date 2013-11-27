@@ -8,14 +8,8 @@
         }
     ],
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/goatherd/jiffybox-api"
-        }
-    ],
     "require": {
-        "goatherd/jiffybox-api": "*",
+        "goatherd/jiffybox-api": "0.9",
         "silex/silex": "~1.1",
         "symfony/yaml": "~2.3",
         "twig/twig": "~1.8",
