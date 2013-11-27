@@ -1,3 +1,4 @@
+sitename: Jiffybox Server Control
 jiffybox:
   token: 	# Set your jiffybox token here.
   server: 	# Set the id of the server you wish to control here.

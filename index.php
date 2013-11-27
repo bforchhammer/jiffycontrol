@@ -66,6 +66,7 @@ $app->get('/', function () use ($app) {
 
     // Render the box and available actions.
     return $app['twig']->render('index.twig', array(
+      'sitename' => $app['config']['sitename'],
       'server' => array(
         'ip' => $box->ips->public[0],
         'name' => $box->name,
